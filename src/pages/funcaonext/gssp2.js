@@ -1,23 +1,51 @@
-import { Container } from "react-bootstrap"
+import { Container, Table } from "react-bootstrap"
+import { noticias } from "../api/noticias/noticias"
 
 export async function getServerSideProps() {
-  // Example data (you can replace this with a real API call or logic)
-  const repo = {
-    name: "Info A",
-    owner: "FW1",
-    stars: 132139,
-  };
-
-  return { props: { repo } };
+    return {
+        props: {
+            repo:
+                { "var1": "Info A", "var2": "FW1", "nome": "IFMS" }
+        }
+    }
 }
-
 export default function Gssp2({ repo }) {
-  return (
-    <Container className="text-center">
-      <h1>Server Side Props - 2</h1>
-      <p><strong>Repository:</strong> {repo.name}</p>
-      <p><strong>Owner:</strong> {repo.owner}</p>
-      <p><strong>Stars:</strong> ⭐ {repo.stars}</p>
-    </Container>
-  );
+
+    return (
+        <>
+            <Container className="text-center">
+                <h1>Server Side Props - 2</h1>
+                {Array.isArray(repo) ? "sim" : "não"}
+                {Object.entries(repo).map(([key, value]) => (
+                    <p>{key}: {value}</p>
+                ))}
+            </Container>
+            <Container>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Conteudo</th>
+                            <th>Tipo</th>
+                            <th>DH</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {Array.isArray(noticias) ?
+                            noticias.map(noticia => 
+                                <tr>
+                                    <td>{noticia.idnoticia}</td>
+                                    <td>{noticia.titulonoticia}</td>
+                                    <td>{noticia.conteudonoticia}</td>
+                                    <td>{noticia.tiponoticia}</td>
+                                    <td>{new Date(noticia.datahoracadastro).toLocaleString()}</td>
+                                </tr>
+                            )
+                            : "não"}
+                    </tbody>
+                </Table>
+            </Container>
+        </>
+    )
 }
