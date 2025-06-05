@@ -1,5 +1,4 @@
 export const noticias = [
-    [
   {
     "idnoticia": 1,
     "titulonoticia": "Descoberta nova espécie de inseto na Amazônia",
@@ -210,5 +209,4 @@ export const noticias = [
     "tiponoticia": "cultura",
     "datahoracadastro": "2023-05-21T18:30:00"
   }
-]
 ]

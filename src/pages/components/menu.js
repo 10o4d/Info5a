@@ -29,9 +29,10 @@ export default function Menu() {
               <NavDropdown.Item href="/cadastro/noticia">Cadastro Notícia</NavDropdown.Item>
             </NavDropdown>
 
-<NavDropdown title="FuncaoNext" id="funcaonext">
+          <NavDropdown title="FuncaoNext" id="funcaonext">
               <NavDropdown.Item href="/funcaonext/gssp">GetServerSideProps</NavDropdown.Item>
                <NavDropdown.Item href="/funcaonext/gssp2">GetServerSideProps-2</NavDropdown.Item>
+               <NavDropdown.Item href="/funcaonext/gsspcard">GetServerSidePropsCard-3</NavDropdown.Item>
             </NavDropdown>
 
 

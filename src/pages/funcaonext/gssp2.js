@@ -33,7 +33,7 @@ export default function Gssp2({ repo }) {
                     </thead>
                     <tbody>
                         {Array.isArray(noticias) ?
-                            noticias.map(noticia => 
+                            noticias.map(noticia =>
                                 <tr>
                                     <td>{noticia.idnoticia}</td>
                                     <td>{noticia.titulonoticia}</td>
