@@ -1,11 +1,16 @@
-import { useRouter } from 'next/router'
 import { Container } from 'react-bootstrap'
-
-export default function Page() {
-    const router = useRouter()
+import Cards from '../components/cards'
+export async function getServerSideProps(req) {
+    const res = await fetch('http://localhost:3000/api/noticias/' + req.query.id)
+    const repo = await res.json()
+    return { props: { noticia: repo } }
+}
+export default function Page({ noticia }) {
     return <>
-        <Container className="text-center">
-            <h1>Post: {router.query.id}</h1>
+        <Container>
+            <Cards idnoticia={noticia.idnoticia} titulonoticia={noticia.titulonoticia}
+                tiponoticia={noticia.tiponoticia}  conteudonoticia={noticia.conteudonoticia}
+                datahoracadastro={noticia.datahoracadastro} />
         </Container>
     </>
 }
